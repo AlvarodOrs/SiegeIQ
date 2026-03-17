@@ -17,23 +17,24 @@ export const STAR_COLORS = [
   '#ff0000',  // 6 - red
 ]
 
-// ── Troops & Heros ────────────────────────────────────────────
-export const TROOP_TYPES = [
-  { id: 'raged_barbarian',    label: 'Raged Barb',     color: '#f59e0b', emoji: '⚔️'  },
-  { id: 'sneaky_archer',      label: 'Sneaky Archer',  color: '#10b981', emoji: '🏹'  },
-  { id: 'boxer_giant',        label: 'Boxer Giant',    color: '#84cc16', emoji: '🥊'  },
-  { id: 'beta_minion',        label: 'Beta Minion',    color: '#06b6d4', emoji: '👾'  },
-  { id: 'bomber',             label: 'Bomber',         color: '#8b5cf6', emoji: '💣'  },
-  { id: 'baby_dragon',        label: 'Baby Dragon',    color: '#ec4899', emoji: '🐉'  },
-  { id: 'cannon_cart',        label: 'Cannon Cart',    color: '#f97316', emoji: '🛒'  },
-  { id: 'night_witch',        label: 'Night Witch',    color: '#7c3aed', emoji: '🧙‍♀️'  },
-  { id: 'drop_ship',          label: 'Drop Ship',      color: '#0ea5e9', emoji: '🚀'  },
-  { id: 'power_pekka',        label: 'Power P.E.K.K.A',color: '#6366f1', emoji: '🤖'  },
-  { id: 'hog_glider',         label: 'Hog Glider',     color: '#ef4444', emoji: '🪂'  },
-  { id: 'electrofire_wizard', label: 'Electrofire Wiz',color: '#22d3ee', emoji: '🧙‍♂️'  },
-  // ── Heroes ──
-  { id: 'battle_machine',     label: 'Battle Machine', color: '#e8a020', emoji: '🦾'  },
-  { id: 'battle_copter',      label: 'Battle Copter',  color: '#f5c842', emoji: '🚁'  },
+// ── Army ──────────────────────────────────────────────────────
+export const ARMY_TYPES = [
+  // ── Troops ────────────
+  { id: 'raged_barbarian',    label: 'Raged Barb',     color: '#f59e0b', emoji: '⚔️'  , type: 'troop'},
+  { id: 'sneaky_archer',      label: 'Sneaky Archer',  color: '#10b981', emoji: '🏹'  , type: 'troop'},
+  { id: 'boxer_giant',        label: 'Boxer Giant',    color: '#84cc16', emoji: '🥊'  , type: 'troop'},
+  { id: 'beta_minion',        label: 'Beta Minion',    color: '#06b6d4', emoji: '👾'  , type: 'troop'},
+  { id: 'bomber',             label: 'Bomber',         color: '#8b5cf6', emoji: '💣'  , type: 'troop'},
+  { id: 'baby_dragon',        label: 'Baby Dragon',    color: '#ec4899', emoji: '🐉'  , type: 'troop'},
+  { id: 'cannon_cart',        label: 'Cannon Cart',    color: '#f97316', emoji: '🛒'  , type: 'troop'},
+  { id: 'night_witch',        label: 'Night Witch',    color: '#7c3aed', emoji: '🧙‍♀️'  , type: 'troop'},
+  { id: 'drop_ship',          label: 'Drop Ship',      color: '#0ea5e9', emoji: '🚀'  , type: 'troop'},
+  { id: 'power_pekka',        label: 'Power P.E.K.K.A',color: '#6366f1', emoji: '🤖'  , type: 'troop'},
+  { id: 'hog_glider',         label: 'Hog Glider',     color: '#ef4444', emoji: '🪂'  , type: 'troop'},
+  { id: 'electrofire_wizard', label: 'Electrofire Wiz',color: '#22d3ee', emoji: '🧙‍♂️'  , type: 'troop'},
+// ── Heroes ────────────
+  { id: 'battle_machine',     label: 'Battle Machine', color: '#e8a020', emoji: '🦾'  , type: 'hero'},
+  { id: 'battle_copter',      label: 'Battle Copter',  color: '#f5c842', emoji: '🚁'  , type: 'hero'},
 ]
 
 // ── Heatmap colour ramp (t → [R, G, B, A]) ───────────────────

@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
 import styles from './LeftPanel.module.css'
 import {
-  TROOP_TYPES, STAR_COLORS,
-  CORNER_COLORS, CORNER_LABELS,
-  PHASE_LABELS, PHASE_INSTRUCTIONS,
+  ARMY_TYPES, STAR_COLORS, CORNER_COLORS,
+  CORNER_LABELS, PHASE_LABELS, PHASE_INSTRUCTIONS,
 } from '../utils/constants'
 
 export default function LeftPanel({
   phase, corners, attacks, currentAttack,
-  selectedTroop, showGrid, showLabels,
+  selectedUnit, showGrid, showLabels,
   onUpload, onResetCorners, onGoPhase,
-  onSelectTroop, onSetStar, onUndoDeployment, onSaveAttack,
+  onSelectUnit, onSetStar, onUndoDeployment, onSaveAttack,
   onToggleGrid, onToggleLabels,
   onExport, onImport,
 }) {
@@ -85,22 +84,36 @@ export default function LeftPanel({
         </section>
       )}
 
-      {/* Troop selector */}
+      {/* Army selector */}
       {phase === 'deploy' && (
         <section className={styles.section}>
-          <div className="section-label">TROOP TYPE</div>
+          <div className="section-label">ARMY TYPE</div>
           <div className={styles.troopGrid}>
-            {TROOP_TYPES.map(t => (
-              <button
-                key={t.id}
-                className={`${styles.troopBtn} ${selectedTroop === t.id ? styles.troopSelected : ''}`}
-                style={selectedTroop === t.id ? { background: t.color + '18', borderColor: t.color, color: t.color } : {}}
-                onClick={() => onSelectTroop(t.id)}
-              >
-                <span className={styles.troopEmoji}>{t.emoji}</span>
-                <span>{t.label.toUpperCase()}</span>
-              </button>
-            ))}
+          {/* Troops */}
+          <div className={styles.troopGrid}>
+            {ARMY_TYPES.map(t => {
+              const isSelected = selectedUnit?.id === t.id;
+              let isDisabled = false;
+
+              if (t.type === 'hero') {
+                const deployedHero = currentAttack.deployments.find(d => d.unitType === 'hero')
+                isDisabled = deployedHero && deployedHero.unitId !== t.id
+              }
+
+              return (
+                <button
+                  key={t.id}
+                  className={`${styles.troopBtn} ${isSelected ? styles.troopSelected : ''} ${isDisabled ? styles.disabledBtn : ''}`}
+                  style={isSelected ? { background: t.color + '18', borderColor: t.color, color: t.color } : {}}
+                  onClick={() => !isDisabled && onSelectUnit(t.id, t.type)}
+                  disabled={isDisabled}
+                >
+                  <span className={styles.troopEmoji}>{t.emoji}</span>
+                  <span>{t.label.toUpperCase()}</span>
+                </button>
+              );
+            })}
+          </div>
           </div>
         </section>
       )}

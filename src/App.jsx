@@ -101,13 +101,15 @@ export default function App() {
           corners={state.corners}
           attacks={state.attacks}
           currentAttack={state.currentAttack}
-          selectedTroop={state.selectedTroop}
+          selectedUnit={state.selectedUnit}
           showGrid={state.showGrid}
           showLabels={state.showLabels}
           onUpload={handleUploadClick}
           onResetCorners={state.resetCorners}
           onGoPhase={state.goPhase}
-          onSelectTroop={state.setSelectedTroop}
+          onSelectUnit={(id, type) => state.setSelectedUnit({ id, type })}
+          onSelectTroop={(id) => state.setSelectedUnit({ id, type: 'troop' })}
+          onSelectHero={(id) => state.setSelectedUnit({ id, type: 'hero' })}
           onSetStar={state.setStar}
           onUndoDeployment={state.undoDeployment}
           onSaveAttack={state.saveAttack}
