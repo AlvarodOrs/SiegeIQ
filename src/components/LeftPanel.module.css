@@ -7,6 +7,11 @@
   overflow-y: auto;
   overflow-x: hidden;
   background: var(--panel);
+  
+  /* Shared Star Colors */
+  --coc-silver: #DEE3E6;
+  --coc-gold: #FFD700;
+  --star-empty: #1a1a1a;
 }
 
 .section {
@@ -14,7 +19,12 @@
   border-bottom: 1px solid var(--border);
 }
 
-/* Instruction box */
+/* --- Shared Star Component Logic --- */
+.silverStage, .logSilver { color: var(--coc-silver) !important; }
+.goldStage, .logGold { color: var(--coc-gold) !important; }
+.starGrey, .logEmpty { color: var(--star-empty) !important; }
+
+/* --- Instruction box --- */
 .instrBox {
   background: rgba(58,143,217,0.06);
   border: 1px solid rgba(58,143,217,0.2);
@@ -32,10 +42,9 @@
   color: var(--gold);
   letter-spacing: 0.12em;
 }
-.instrText { }
 .cornerProgress { color: var(--green); font-size: 9px; }
 
-/* Corner list */
+/* --- Corner list --- */
 .cornerList { margin-bottom: 10px; }
 .cornerRow {
   display: flex;
@@ -46,7 +55,7 @@
 }
 .cornerCoord { margin-left: auto; color: var(--muted); font-size: 9px; }
 
-/* Buttons */
+/* --- Buttons --- */
 .btn {
   display: flex;
   align-items: center;
@@ -78,13 +87,10 @@
 .muted   { color: var(--muted); }
 .active  { border-color: var(--blue); color: var(--blue); background: rgba(58,143,217,0.1); }
 
-.btnRow {
-  display: flex;
-  gap: 6px;
-}
+.btnRow { display: flex; gap: 6px; }
 .btnRow .btn { flex: 1; }
 
-/* Troop grid */
+/* --- Troop grid --- */
 .troopGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -110,34 +116,62 @@
 .troopSelected  { font-weight: 700; }
 .troopEmoji { font-size: 16px; }
 
-/* Stars */
+/* --- Star Selector (Interactive) --- */
+.starContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+
 .starRow {
   display: flex;
-  gap: 4px;
-  margin-bottom: 10px;
+  justify-content: center;
+  gap: 15px;
 }
+
 .starBtn {
-  flex: 1;
-  padding: 7px 2px;
-  border-radius: 4px;
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,0.02);
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 11px;
+  background: none;
+  border: none;
+  font-size: 28px;
   cursor: pointer;
-  transition: all 0.15s;
-  text-align: center;
+  padding: 0;
+  line-height: 1;
+  transition: transform 0.1s ease, opacity 0.1s ease;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.9));
 }
-.starBtn:hover { border-color: var(--border2); color: var(--text2); }
-.star0 { background: rgba(107,114,128,0.2); border-color: #6b7280; color: #9ca3af; }
-.star1 { background: rgba(232,160,32,0.15); border-color: var(--gold);   color: var(--gold);  }
-.star2 { background: rgba(249,115,22,0.15); border-color: var(--red);    color: var(--red);   }
-.star3 { background: rgba(34,201,122,0.15); border-color: var(--green);  color: var(--green); }
+
+.starActive.silverStage { filter: drop-shadow(0 0 8px rgba(222, 227, 230, 0.4)); }
+.starActive.goldStage { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.4)); }
+
+.starHovering { opacity: 0.65; transform: scale(1.1); }
+.starActive:not(.starHovering) { opacity: 1 !important; transform: scale(1.0); }
+.starBtn:hover { transform: scale(1.2); }
+
+.starFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.starCountDisplay { font-family: var(--mono); font-size: 10px; color: var(--muted); }
+
+.resetBtn {
+  background: none; border: none;
+  color: var(--muted); font-size: 8px;
+  text-transform: uppercase; cursor: pointer; opacity: 0.6;
+}
+.resetBtn:hover { color: var(--red); opacity: 1; }
 
 .deployCount { font-size: 9px; color: var(--muted); text-align: center; }
 
-/* Attack log */
+/* --- Attack log --- */
 .attackLog {
   display: flex;
   flex-direction: column;
@@ -157,3 +191,12 @@
 }
 .atkId  { color: var(--muted); }
 .atkDep { color: var(--muted); font-size: 9px; }
+
+/* Attack Log Stars (Static) */
+.logStars { display: flex; gap: 2px; align-items: center; }
+.logStar { 
+  font-size: 10px; 
+  line-height: 1;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.5));
+}
+.logEmpty { opacity: 0.3; }

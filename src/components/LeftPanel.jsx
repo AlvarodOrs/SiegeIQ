@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import styles from './LeftPanel.module.css'
 import {
   TROOP_TYPES, STAR_COLORS,
@@ -13,19 +14,17 @@ export default function LeftPanel({
   onToggleGrid, onToggleLabels,
   onExport, onImport,
 }) {
+  const [hoverStars, setHoverStars] = useState(null)
+
   const canSave = currentAttack.stars !== null && currentAttack.deployments.length > 0
 
-  function handleImportFile(e) {
-    const file = e.target.files[0]
-    if (!file) return
-    const reader = new FileReader()
-    reader.onload = (ev) => onImport(ev.target.result)
-    reader.readAsText(file)
-  }
+  // Determine if a star should look "lit up"
+  // If hovering: show stars up to hover point
+  // If not hovering: show stars up to currentAttack.stars
+  const getDisplayStars = () => (hoverStars !== null ? hoverStars : currentAttack.stars || 0);
 
   return (
     <aside className={styles.panel}>
-
       {/* Instructions */}
       <section className={styles.section}>
         <div className="section-label">INSTRUCTIONS</div>
@@ -45,12 +44,10 @@ export default function LeftPanel({
             📁 {phase === 'corners' ? 'CHANGE IMAGE' : 'UPLOAD BASE IMAGE'}
           </button>
           {attacks.length > 0 && (
-            <>
-              <label className={`${styles.btn} ${styles.muted}`} style={{ cursor:'pointer', marginTop:4 }}>
-                ⬆ LOAD SESSION
-                <input type="file" accept=".json" style={{ display:'none' }} onChange={handleImportFile} />
-              </label>
-            </>
+            <label className={`${styles.btn} ${styles.muted}`} style={{ cursor:'pointer', marginTop:4 }}>
+              ⬆ LOAD SESSION
+              <input type="file" accept=".json" style={{ display:'none' }} onChange={handleImportFile} />
+            </label>
           )}
         </section>
       )}
@@ -112,17 +109,42 @@ export default function LeftPanel({
       {phase === 'deploy' && (
         <section className={styles.section}>
           <div className="section-label">ATTACK RESULT</div>
-          <div className={styles.starRow}>
-            {[0, 1, 2, 3].map(s => (
-              <button
-                key={s}
-                className={`${styles.starBtn} ${currentAttack.stars === s ? styles[`star${s}`] : ''}`}
-                onClick={() => onSetStar(s)}
-              >
-                {s === 0 ? '0★' : '★'.repeat(s)}
-              </button>
+          <div 
+            className={styles.starContainer}
+            onMouseLeave={() => setHoverStars(null)}
+          >
+            {[ [1, 2, 3], [4, 5, 6] ].map((row, rowIndex) => (
+              <div key={rowIndex} className={styles.starRow}>
+                {row.map(s => {
+                  const displayValue = getDisplayStars();
+                  const isActive = s <= displayValue;
+                  const isHoverMode = hoverStars !== null;
+                  const stageClass = s <= 3 ? styles.silverStage : styles.goldStage;
+
+                  return (
+                    <button
+                      key={s}
+                      className={`
+                        ${styles.starBtn} 
+                        ${stageClass}
+                        ${isActive ? styles.starActive : styles.starGrey}
+                        ${(isActive && isHoverMode) ? styles.starHovering : ''}
+                      `}
+                      onMouseEnter={() => setHoverStars(s)}
+                      onClick={() => onSetStar(s)}
+                    >
+                      ★
+                    </button>
+                  );
+                })}
+              </div>
             ))}
+            <div className={styles.starFooter}>
+               <button className={styles.resetBtn} onClick={() => onSetStar(0)}>RESET TO 0★</button>
+               <span className={styles.starCountDisplay}>{currentAttack.stars || 0}/6</span>
+            </div>
           </div>
+
           <div className={styles.btnRow} style={{ marginBottom: 8 }}>
             <button className={`${styles.btn} ${styles.muted}`} onClick={onUndoDeployment}>
               ↩ UNDO
@@ -135,9 +157,6 @@ export default function LeftPanel({
             >
               💾 SAVE ATTACK
             </button>
-          </div>
-          <div className={styles.deployCount}>
-            {currentAttack.deployments.length} placement(s) this attack
           </div>
         </section>
       )}
@@ -168,14 +187,28 @@ export default function LeftPanel({
           <div className={styles.attackLog}>
             {attacks.map(a => (
               <div key={a.attack_id} className={styles.attackEntry}>
-                <span className={styles.atkId}>ATK #{a.attack_id}</span>
-                <span style={{ color: STAR_COLORS[a.stars] }}>
-                  {a.stars === 0 ? '0★' : '★'.repeat(a.stars)}
-                </span>
+                <span className={styles.atkId}>#{a.attack_id}</span>
+                
+                {/* Star Display for Log */}
+                <div className={styles.logStars}>
+                  {[1, 2, 3, 4, 5, 6].map(s => (
+                    <span 
+                      key={s} 
+                      className={`
+                        ${styles.logStar} 
+                        ${s <= a.stars ? (s <= 3 ? styles.logSilver : styles.logGold) : styles.logEmpty}
+                      `}
+                    >
+                      ★
+                    </span>
+                  ))}
+                </div>
+
                 <span className={styles.atkDep}>{a.deployments.length}✦</span>
               </div>
             ))}
           </div>
+          
           {phase === 'deploy' && (
             <button
               className={`${styles.btn} ${styles.purple}`}
@@ -190,7 +223,6 @@ export default function LeftPanel({
           </button>
         </section>
       )}
-
     </aside>
   )
 }

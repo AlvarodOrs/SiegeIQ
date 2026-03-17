@@ -7,13 +7,15 @@ export const CORNER_LABELS  = ['LEFT', 'TOP', 'RIGHT', 'BOTTOM'];
 export const CORNER_COLORS  = ['#ef4444', '#f59e0b', '#22c55e', '#60a5fa'];
 
 // ── Star colours ──────────────────────────────────────────────
-export const STAR_COLORS = {
-  0: '#151392',
-  1: '#17f50b',
-  2: '#f5f916',
-  3: '#c99a22',
-  4: '#c96d22',
-};
+export const STAR_COLORS = [
+  '#9ca3af',  // 0 - grey
+  '#22c97a',  // 1 - green
+  '#90ee90',  // 2 - light green
+  '#ffff00',  // 3 - yellow
+  '#ffa500',  // 4 - orange
+  '#ff6347',  // 5 - red-orange
+  '#ff0000',  // 6 - red
+]
 
 // ── Troops & Heros ────────────────────────────────────────────
 export const TROOP_TYPES = [
