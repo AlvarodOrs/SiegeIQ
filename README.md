@@ -1,4 +1,4 @@
-# CoC Builder Base Attack Analyzer v2.2
+# SiegeIQ - the CoC Builder Base Defense Analyzer v1.0
 
 A professional tool for recording, replaying, and heatmap-analyzing attacks on
 your Clash of Clans Builder Base. Built in React + Vite. No backend required —
