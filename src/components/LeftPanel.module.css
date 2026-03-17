@@ -1,0 +1,159 @@
+.panel {
+  width: 210px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--panel);
+}
+
+.section {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Instruction box */
+.instrBox {
+  background: rgba(58,143,217,0.06);
+  border: 1px solid rgba(58,143,217,0.2);
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 10px;
+  line-height: 1.7;
+  color: var(--text2);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.stepTag {
+  font-size: 9px;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+}
+.instrText { }
+.cornerProgress { color: var(--green); font-size: 9px; }
+
+/* Corner list */
+.cornerList { margin-bottom: 10px; }
+.cornerRow {
+  display: flex;
+  gap: 6px;
+  font-size: 10px;
+  line-height: 1.9;
+  align-items: center;
+}
+.cornerCoord { margin-left: auto; color: var(--muted); font-size: 9px; }
+
+/* Buttons */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 7px 10px;
+  border-radius: 5px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  font-family: var(--mono);
+  border: 1px solid var(--border2);
+  background: rgba(255,255,255,0.03);
+  color: var(--text2);
+  transition: all 0.15s;
+}
+.btn:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+.btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+.primary { background: rgba(232,160,32,0.12); border-color: var(--gold); color: var(--gold); }
+.primary:hover { background: rgba(232,160,32,0.22); }
+.danger  { background: rgba(232,64,64,0.1);  border-color: var(--red);    color: var(--red);   }
+.danger:hover  { background: rgba(232,64,64,0.18); }
+.success { background: rgba(34,201,122,0.1); border-color: var(--green);  color: var(--green); }
+.success:hover { background: rgba(34,201,122,0.18); }
+.purple  { background: rgba(155,110,255,0.1);border-color: var(--purple); color: var(--purple);}
+.purple:hover  { background: rgba(155,110,255,0.18); }
+.muted   { color: var(--muted); }
+.active  { border-color: var(--blue); color: var(--blue); background: rgba(58,143,217,0.1); }
+
+.btnRow {
+  display: flex;
+  gap: 6px;
+}
+.btnRow .btn { flex: 1; }
+
+/* Troop grid */
+.troopGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+.troopBtn {
+  padding: 6px 4px;
+  border-radius: 5px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+  color: var(--text2);
+  font-family: var(--mono);
+  font-size: 9px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  transition: all 0.15s;
+  letter-spacing: 0.05em;
+}
+.troopBtn:hover { border-color: var(--border2); color: var(--text); }
+.troopSelected  { font-weight: 700; }
+.troopEmoji { font-size: 16px; }
+
+/* Stars */
+.starRow {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+.starBtn {
+  flex: 1;
+  padding: 7px 2px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: center;
+}
+.starBtn:hover { border-color: var(--border2); color: var(--text2); }
+.star0 { background: rgba(107,114,128,0.2); border-color: #6b7280; color: #9ca3af; }
+.star1 { background: rgba(232,160,32,0.15); border-color: var(--gold);   color: var(--gold);  }
+.star2 { background: rgba(249,115,22,0.15); border-color: var(--red);    color: var(--red);   }
+.star3 { background: rgba(34,201,122,0.15); border-color: var(--green);  color: var(--green); }
+
+.deployCount { font-size: 9px; color: var(--muted); text-align: center; }
+
+/* Attack log */
+.attackLog {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 180px;
+  overflow-y: auto;
+}
+.attackEntry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 5px 8px;
+  font-size: 10px;
+}
+.atkId  { color: var(--muted); }
+.atkDep { color: var(--muted); font-size: 9px; }

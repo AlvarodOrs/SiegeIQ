@@ -1,0 +1,63 @@
+// ── Grid ──────────────────────────────────────────────────────
+export const GRID_SIZE   = 40;   // 40x40 cells
+export const GRID_MAX    = 20;   // diamond coords: -20 → +20
+
+// ── Corner ordering: Left → Top → Right → Bottom ─────────────
+export const CORNER_LABELS  = ['LEFT', 'TOP', 'RIGHT', 'BOTTOM'];
+export const CORNER_COLORS  = ['#ef4444', '#f59e0b', '#22c55e', '#60a5fa'];
+
+// ── Star colours ──────────────────────────────────────────────
+export const STAR_COLORS = {
+  0: '#151392',
+  1: '#17f50b',
+  2: '#f5f916',
+  3: '#c99a22',
+  4: '#c96d22',
+};
+
+// ── Troops & Heros ────────────────────────────────────────────
+export const TROOP_TYPES = [
+  { id: 'raged_barbarian',    label: 'Raged Barb',     color: '#f59e0b', emoji: '⚔️'  },
+  { id: 'sneaky_archer',      label: 'Sneaky Archer',  color: '#10b981', emoji: '🏹'  },
+  { id: 'boxer_giant',        label: 'Boxer Giant',    color: '#84cc16', emoji: '🥊'  },
+  { id: 'beta_minion',        label: 'Beta Minion',    color: '#06b6d4', emoji: '👾'  },
+  { id: 'bomber',             label: 'Bomber',         color: '#8b5cf6', emoji: '💣'  },
+  { id: 'baby_dragon',        label: 'Baby Dragon',    color: '#ec4899', emoji: '🐉'  },
+  { id: 'cannon_cart',        label: 'Cannon Cart',    color: '#f97316', emoji: '🛒'  },
+  { id: 'night_witch',        label: 'Night Witch',    color: '#7c3aed', emoji: '🧙‍♀️'  },
+  { id: 'drop_ship',          label: 'Drop Ship',      color: '#0ea5e9', emoji: '🚀'  },
+  { id: 'power_pekka',        label: 'Power P.E.K.K.A',color: '#6366f1', emoji: '🤖'  },
+  { id: 'hog_glider',         label: 'Hog Glider',     color: '#ef4444', emoji: '🪂'  },
+  { id: 'electrofire_wizard', label: 'Electrofire Wiz',color: '#22d3ee', emoji: '🧙‍♂️'  },
+  // ── Heroes ──
+  { id: 'battle_machine',     label: 'Battle Machine', color: '#e8a020', emoji: '🦾'  },
+  { id: 'battle_copter',      label: 'Battle Copter',  color: '#f5c842', emoji: '🚁'  },
+]
+
+// ── Heatmap colour ramp (t → [R, G, B, A]) ───────────────────
+// Ported from Python version; goes cold-blue → cyan → green → yellow → red
+export const HEATMAP_STOPS = [
+  [0.00, [0,   0,   80,  0  ]],
+  [0.20, [0,   60,  220, 130]],
+  [0.40, [0,   180, 255, 170]],
+  [0.60, [0,   255, 120, 210]],
+  [0.80, [255, 200, 0,   235]],
+  [1.00, [255, 30,  0,   255]],
+];
+
+// ── Phases ────────────────────────────────────────────────────
+export const PHASES = ['upload', 'corners', 'deploy', 'heatmap'];
+
+export const PHASE_LABELS = {
+  upload:  'STEP 1 · UPLOAD',
+  corners: 'STEP 2 · CORNERS',
+  deploy:  'STEP 3 · DEPLOY',
+  heatmap: 'STEP 4 · HEATMAP',
+};
+
+export const PHASE_INSTRUCTIONS = {
+  upload:  'Upload a screenshot of your Builder Base to begin.',
+  corners: 'Click the 4 base corners in order: Left → Top → Right → Bottom. Drag to fine-tune.',
+  deploy:  'Select a troop, then click inside the diamond to record deployments.',
+  heatmap: 'Heatmap of recorded attack deployments, aggregated by star outcome.',
+};

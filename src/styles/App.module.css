@@ -1,0 +1,19 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.canvasWrapper {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+}

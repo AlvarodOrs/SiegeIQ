@@ -1,0 +1,92 @@
+.panel {
+  width: 196px;
+  flex-shrink: 0;
+  border-left: 1px solid var(--border);
+  background: var(--panel);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.section {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.filterBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+  font-family: var(--mono);
+  font-size: 10px;
+  cursor: pointer;
+  color: var(--text2);
+  transition: all 0.15s;
+  margin-bottom: 4px;
+}
+.filterBtn:hover { border-color: var(--border2); color: var(--text); }
+.filterBtn.active { border-color: var(--purple); background: rgba(155,110,255,0.1); }
+.filterCount { font-size: 9px; color: var(--muted); }
+
+.opacityLabel {
+  font-size: 9px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.opacityLabel span { color: var(--text2); }
+
+.slider { width: 100%; accent-color: var(--gold); }
+
+.statRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  margin-bottom: 5px;
+}
+.statLabel { color: var(--muted); }
+.statDivider {
+  border-top: 1px solid var(--border);
+  margin: 8px 0;
+}
+
+.colorScale {
+  height: 10px;
+  border-radius: 5px;
+  background: linear-gradient(90deg,
+    rgba(0,0,80,0) 0%,
+    rgba(0,60,220,0.7) 25%,
+    rgba(0,255,120,0.85) 55%,
+    rgba(255,200,0,1) 78%,
+    rgba(255,30,0,1) 100%
+  );
+  margin-bottom: 5px;
+}
+.scaleLabels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 8px;
+  color: var(--muted);
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 7px 10px;
+  border-radius: 5px;
+  border: 1px solid var(--border2);
+  background: rgba(255,255,255,0.03);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.backBtn:hover { color: var(--text); background: rgba(255,255,255,0.06); }

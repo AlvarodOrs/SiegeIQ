@@ -1,0 +1,72 @@
+.area {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at center, #0f1a28 0%, var(--bg) 70%);
+}
+
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+}
+
+/* Cursors */
+.crosshair { cursor: crosshair; }
+.cell      { cursor: cell; }
+
+/* Empty state */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  color: var(--muted);
+  z-index: 1;
+}
+.bigIcon { font-size: 72px; filter: grayscale(0.2); }
+.emptyMsg { font-size: 12px; letter-spacing: 0.15em; }
+
+/* Corner dots */
+.cornerDot {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid white;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+}
+.cornerLabel {
+  position: absolute;
+  font-size: 9px;
+  background: rgba(0,0,0,0.75);
+  padding: 1px 5px;
+  border-radius: 3px;
+  z-index: 21;
+  transform: translateX(-50%);
+  letter-spacing: 0.08em;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(13,17,23,0.9);
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+  padding: 4px 14px;
+  font-size: 9px;
+  color: var(--text2);
+  letter-spacing: 0.1em;
+  pointer-events: none;
+  z-index: 30;
+}
