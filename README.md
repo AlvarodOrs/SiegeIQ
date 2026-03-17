@@ -9,7 +9,7 @@ all data lives in-browser, exportable as JSON.
 ## Project Structure
 
 ```
-coc-analyzer/
+SiegeIQ/
 ├── index.html                    # Vite entry point
 ├── vite.config.js
 ├── package.json
