@@ -1,6 +1,6 @@
 {
-  "name": "siegeiq",
-  "version": "1.0.0",
+  "name": "siege-iq",
+  "version": "1.0.3",
   "description": "Clash of Clans Builder Base Attack Analyzer — Diamond Grid + Heatmap System",
   "scripts": {
     "dev": "vite",
