@@ -1,3 +1,21 @@
+<!-- [START]
+## Overview
+
+SiegeIQ is a web tool for Clash of Clans players focused on improving their Builder Base defense. Since the game provides no native replay analytics, SiegeIQ fills that gap by letting you manually log defense replays and visualize where attacks concentrate on your layout.
+
+The result is a heatmap view broken down by star outcome — letting you identify which areas of your base are consistently exploited and adjust your layout accordingly.
+
+## Scope
+
+- **Replay logging** — manual entry of attack data per replay: troop composition, attack origin zones, and star result
+- **Heatmap generation** — spatial visualization of attack patterns overlaid on the base grid
+- **Star-based filtering** — heatmaps segmented by 0, 1, 2, and 3-star outcomes to isolate high-value attack patterns
+- **Layout analysis** — visual feedback to identify weak points and inform base redesigns
+
+## Status
+
+In progress. Replay logging and heatmap rendering are live at [siege-iq.vercel.app](https://siege-iq.vercel.app).
+[END] -->
 # SiegeIQ - the CoC Builder Base Defense Analyzer v1.2
 
 A professional tool for recording, replaying, and heatmap-analyzing attacks on
