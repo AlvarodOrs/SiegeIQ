@@ -14,7 +14,7 @@ The result is a heatmap view broken down by star outcome — letting you identif
 
 ## Status
 
-Complete. Replay logging and heatmap rendering are live at [siege-iq.vercel.app](https://siege-iq.vercel.app).
+Live. Replay logging and heatmap rendering are live at [siege-iq.vercel.app](https://siege-iq.vercel.app).
 [END] -->
 # SiegeIQ - the CoC Builder Base Defense Analyzer v1.2
 
